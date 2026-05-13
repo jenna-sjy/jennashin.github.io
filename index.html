@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jenna Shin — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAFAF7;
+    --ink: #1C1C1A;
+    --ink-soft: #4A4A46;
+    --ink-muted: #8A8A84;
+    --accent: #B8956A;
+    --accent-light: #E8D8C4;
+    --line: #D8D4CC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 60px;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 60px 80px;
+    gap: 80px;
+    background: var(--cream);
+  }
+
+  .hero-text { animation: fadeUp 1s ease both; }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+  }
+
+  .hero-bio {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    max-width: 440px;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--ink);
+    color: var(--warm-white);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 14px 32px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--warm-white); transform: translateY(-1px); }
+
+  .hero-visual {
+    animation: fadeUp 1s 0.2s ease both;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-card {
+    background: var(--warm-white);
+    border: 1px solid var(--line);
+    padding: 28px 32px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .hero-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .card-sub {
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 60px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.95;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 0;
+  }
+
+  .skill-item {
+    background: var(--cream);
+    padding: 20px 24px;
+    transition: background 0.2s;
+  }
+  .skill-item:hover { background: var(--accent-light); }
+
+  .skill-category {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .skill-list {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--cream); }
+
+  .exp-grid { display: flex; flex-direction: column; gap: 2px; }
+
+  .exp-item {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 36px 40px;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+  .exp-item:hover { transform: translateX(4px); }
+
+  .exp-meta {}
+  .exp-company {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .exp-period {
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .exp-desc {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+  }
+
+  .exp-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    color: var(--ink-muted);
+  }
+
+  /* ── PROJECT ── */
+  #project { background: var(--warm-white); }
+
+  .project-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .project-content { padding: 56px; }
+
+  .project-tag {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .project-desc {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+
+  .project-methods {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .method-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .method-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .project-visual {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 56px;
+    gap: 32px;
+  }
+
+  .stat-block { text-align: center; }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .stat-divider {
+    width: 1px; height: 40px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--cream); }
+
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  .edu-card {
+    background: var(--warm-white);
+    padding: 40px;
+    transition: transform 0.2s;
+  }
+  .edu-card:hover { transform: translateY(-2px); }
+
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .edu-school {
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .edu-period {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-bottom: 20px;
+  }
+
+  .edu-note {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink);
+    text-align: center;
+    padding: 120px 60px;
+  }
+
+  #contact .section-label { color: var(--accent); }
+
+  #contact .section-title {
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .contact-sub {
+    font-size: 16px;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 60px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.85;
+  }
+
+  .contact-links {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px 28px;
+    border: 1px solid rgba(245,240,232,0.2);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    transition: all 0.25s;
+  }
+  .contact-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .footer-note {
+    font-size: 12px;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 40px; height: 1px;
+    background: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
+    #about { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+    section { padding: 60px 24px; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; padding: 24px; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-visual { padding: 40px; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .stat-divider { display: none; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Jenna Shin</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#project">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-label">Portfolio — 2026</span>
+    <h1 class="hero-name">Jenna<br><em>Shin</em></h1>
+    <p class="hero-title">Consumer Analytics & Marketing</p>
+    <p class="hero-bio">
+      Graduate student at LIM College with hands-on experience in digital marketing, brand communications, and consumer analytics. Passionate about beauty, fashion, and entertainment — including gaming. Bilingual in Korean and English, based in New York City.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:jenna.sjy@gmail.com" class="btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn-outline">View Work</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="card-label">Currently</div>
+      <div class="card-value">M.S. Consumer Analytics</div>
+      <div class="card-sub">LIM College, New York</div>
+    </div>
+    <div class="hero-card">
+      <div class="card-label">Industries</div>
+      <div class="card-value">Beauty · Fashion · Gaming</div>
+      <div class="card-sub">Entertainment & Luxury</div>
+    </div>
+    <div class="hero-card">
+      <div class="card-label">Languages</div>
+      <div class="card-value">Korean · English</div>
+      <div class="card-sub">Native · C1+ Professional</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text fade-in">
+    <span class="section-label">About</span>
+    <h2 class="section-title">Connecting data<br>to brand strategy.</h2>
+    <div class="divider"></div>
+    <p>
+      I am a graduate student in Consumer Analytics at LIM College, New York, with a background in marketing, client coordination, and brand communications. My work sits at the intersection of data-driven thinking and creative strategy.
+    </p>
+    <p>
+      Before my graduate studies, I gained hands-on experience across event marketing, digital strategy, and luxury client services in New York City — developing a strong foundation in how brands communicate, grow, and connect with consumers.
+    </p>
+    <p>
+      I am particularly drawn to the <strong>beauty</strong>, <strong>fashion</strong>, and <strong>entertainment</strong> industries — including gaming — and I bring a bilingual Korean-English perspective to every project I work on.
+    </p>
+  </div>
+
+  <div class="fade-in">
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-category">Analytics</div>
+        <div class="skill-list">Python · R Studio<br>Tableau · Excel</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Marketing</div>
+        <div class="skill-list">Campaign Execution<br>Social Media · SEO</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Research</div>
+        <div class="skill-list">Conjoint Analysis<br>Consumer Surveys</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Operations</div>
+        <div class="skill-list">eCommerce · CRM<br>Client Relations</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Tools</div>
+        <div class="skill-list">Microsoft Office Suite<br>Google Suite</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category">Certified</div>
+        <div class="skill-list">Google eCommerce<br>Certification · 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-label">Experience</span>
+  <h2 class="section-title">Where I've worked</h2>
+
+  <div class="exp-grid">
+    <div class="exp-item fade-in">
+      <div class="exp-meta">
+        <div class="exp-company">ABCVIP</div>
+        <div class="exp-period">May – Aug 2025</div>
+      </div>
+      <div>
+        <div class="exp-role">Marketing & Client Services Intern</div>
+        <p class="exp-desc">
+          Supported marketing campaigns and VIP event executions for a premium concierge agency in New York. Managed client communications across phone, email, and digital channels, monitored social media performance across 3 platforms, and compiled weekly analytics reports — contributing to a 12% increase in engagement within two months.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Event Planning</span>
+          <span class="tag">Social Analytics</span>
+          <span class="tag">Client Relations</span>
+          <span class="tag">Reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-meta">
+        <div class="exp-company">The Burgess Group</div>
+        <div class="exp-period">Mar – May 2025</div>
+      </div>
+      <div>
+        <div class="exp-role">Marketing & Digital Strategy Intern</div>
+        <p class="exp-desc">
+          Conducted competitive market research and digital strategy analysis. Created the Egypt Tour brochure — a branded sales asset that sold out the travel program — and redesigned the company website, improving navigation and increasing client inquiries.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Market Research</span>
+          <span class="tag">Brand Strategy</span>
+          <span class="tag">Content Management</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div class="exp-meta">
+        <div class="exp-company">UEFN Game Jam</div>
+        <div class="exp-period">Apr 2025</div>
+      </div>
+      <div>
+        <div class="exp-role">Marketing Lead</div>
+        <p class="exp-desc">
+          Led all social media marketing across TikTok, Instagram, and Twitter for a live-streamed game development event. Designed promotional assets and coordinated with stream hosts and guest creators for real-time community engagement.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Social Media</span>
+          <span class="tag">Creative Direction</span>
+          <span class="tag">Live Events</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+  <span class="section-label">Academic Projects</span>
+  <h2 class="section-title">Research & Strategy Work</h2>
+
+  <!-- Project 1: Amorepacific -->
+  <div class="project-card fade-in" style="margin-bottom: 2px;">
+    <div class="project-content">
+      <span class="project-tag">Consumer Analytics · LIM College · 2025–2026</span>
+      <h3 class="project-title">Amorepacific:<br>K-Culture & K-Beauty</h3>
+      <p class="project-desc">
+        An independent consumer analytics research project analyzing Amorepacific's North American growth strategy. Identified the company's over-reliance on Asian markets as a key business risk, and developed a data-driven strategy to accelerate revenue diversification through Gen Z digital marketing and cultural positioning.
+      </p>
+      <div class="project-methods">
+        <div class="method-item"><div class="method-dot"></div>Conjoint Analysis — brand, packaging, price, and model type</div>
+        <div class="method-item"><div class="method-dot"></div>Online Survey — 300–500 Gen Z respondents in the US & Canada</div>
+        <div class="method-item"><div class="method-dot"></div>Predictive Modeling & Scenario Simulation</div>
+        <div class="method-item"><div class="method-dot"></div>Executive-level strategic recommendations</div>
+      </div>
+    </div>
+    <div class="project-visual">
+      <div class="stat-block">
+        <div class="stat-number">300+</div>
+        <div class="stat-label">Survey Respondents</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Research Methods</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-number">NA</div>
+        <div class="stat-label">Market Focus</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 2: Riot Games -->
+  <div class="project-card fade-in" style="margin-bottom: 2px;">
+    <div class="project-content">
+      <span class="project-tag">Digital Marketing Strategy · LIM College · 2025–2026</span>
+      <h3 class="project-title">Riot Games:<br>Digital Marketing & Competitive Landscape</h3>
+      <p class="project-desc">
+        A comprehensive digital marketing strategy analysis for Riot Games, examining how League of Legends, VALORANT, and Arcane leverage transmedia storytelling, esports ecosystems, and community-driven content to dominate Gen Z engagement. Included competitive benchmarking against Activision Blizzard and a strategic roadmap for CRM expansion and brand collaboration opportunities.
+      </p>
+      <div class="project-methods">
+        <div class="method-item"><div class="method-dot"></div>SWOT Analysis & Competitive Benchmarking</div>
+        <div class="method-item"><div class="method-dot"></div>Paid / Owned / Earned / Shared Media Framework</div>
+        <div class="method-item"><div class="method-dot"></div>Digital Channel Audit (TikTok, YouTube, Instagram, Newsletter)</div>
+        <div class="method-item"><div class="method-dot"></div>CRM & Lifecycle Marketing Recommendations</div>
+      </div>
+    </div>
+    <div class="project-visual" style="background: #1a1a2e;">
+      <div class="stat-block">
+        <div class="stat-number">6.9M</div>
+        <div class="stat-label">Worlds 2024 Peak Viewers</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Strategic Pillars</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-number">Gen Z</div>
+        <div class="stat-label">Target Audience</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 3: Nykaa -->
+  <div class="project-card fade-in">
+    <div class="project-content">
+      <span class="project-tag">CX Strategy · LIM College · May 2026</span>
+      <h3 class="project-title">Nykaa:<br>Complete CX Strategy</h3>
+      <p class="project-desc">
+        A full customer experience strategy proposal for Nykaa, India's leading beauty platform serving 42M+ customers. Developed two evidence-based strategic initiatives — a Unified Customer Data Platform for hyper-personalization and an Experiential Loyalty Tier program — to deepen customer relationships and sustain market leadership across omnichannel touchpoints.
+      </p>
+      <div class="project-methods">
+        <div class="method-item"><div class="method-dot"></div>CDP Architecture — unified customer data & personalization engine</div>
+        <div class="method-item"><div class="method-dot"></div>Experiential Loyalty Tier Design (beyond transactional rewards)</div>
+        <div class="method-item"><div class="method-dot"></div>Omnichannel Integration — eCommerce, app, 276 physical stores</div>
+        <div class="method-item"><div class="method-dot"></div>KPI Framework: CTR, CLV, NPS, AOV, Retention</div>
+      </div>
+    </div>
+    <div class="project-visual" style="background: #2d1b3d;">
+      <div class="stat-block">
+        <div class="stat-number">42M+</div>
+        <div class="stat-label">Customers Served</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-number">43.5%</div>
+        <div class="stat-label">Email CTR Uplift</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-block">
+        <div class="stat-number">276</div>
+        <div class="stat-label">Physical Stores</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <span class="section-label">Education</span>
+  <h2 class="section-title">Academic background</h2>
+
+  <div class="edu-grid">
+    <div class="edu-card fade-in">
+      <div class="edu-school">LIM College</div>
+      <div class="edu-degree">M.S. Consumer Analytics</div>
+      <div class="edu-period">Sep 2025 — Present · New York, NY</div>
+      <p class="edu-note">
+        Coursework in predictive modeling, data visualization, market research methods, and consumer behavior analytics. Applied research focused on luxury and beauty industries.
+      </p>
+    </div>
+    <div class="edu-card fade-in">
+      <div class="edu-school">Anyang University</div>
+      <div class="edu-degree">B.A. Performing Arts</div>
+      <div class="edu-period">Mar 2018 — Aug 2023 · Gyeonggi-do, Korea</div>
+      <p class="edu-note">
+        Foundation in creative expression, communication, and cross-cultural understanding. Developed strong presentation and interpersonal skills alongside academic study.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="section-label">Contact</span>
+  <h2 class="section-title" style="color: var(--cream);">Let's connect</h2>
+  <p class="contact-sub">
+    Based in New York City. Open to internship opportunities in marketing, brand, eCommerce, and consumer analytics — particularly in beauty, fashion, and entertainment.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:jenna.sjy@gmail.com" class="contact-link">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      jenna.sjy@gmail.com
+    </a>
+    <a href="tel:9148862563" class="contact-link">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      914-886-2563
+    </a>
+    <a href="https://www.linkedin.com/in/jenna-shin" target="_blank" class="contact-link">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+  <p class="footer-note">Jenna Shin · New York, NY · 2026</p>
+</section>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
